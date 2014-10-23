@@ -1,0 +1,14 @@
+# general types
+*.swp
+*.tmp
+
+# python
+*.pyc
+*ipynb_checkpoints/
+
+# data
+
+
+# folders
+build/
+
