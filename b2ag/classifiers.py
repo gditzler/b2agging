@@ -209,7 +209,10 @@ class b2ag:
           yhat = model.predict(data, probs=True)
         else:
           yhat += model.predict(data, probs=True)
-      yhat = yhat/np.sum(yhat)
+      
+      yhat = yhat
+      normalizer = np.tile(np.sum(yhat, axis=1), (len(yhat[0]),1)).transpose()
+      yhat = yhat/normalizer
       
       if i == 0:
         phat = yhat 
