@@ -169,6 +169,11 @@ class b2ag:
   def __init__(self, n_models=50, params={"type":"lr"}, percent_train=1., 
                percent_eval=1., eval_samples=25):
     """
+      @n_models 
+      @params 
+      @percent_train 
+      @percent_eval 
+      @eval_samples 
     """
     self.n_models = 50
     self.params = params
@@ -180,6 +185,8 @@ class b2ag:
   def fit(self, data, labels):
     """
     fit(self, data, labels)
+      @data
+      @labels
 
     Fit a b2ag model
     """
@@ -220,8 +227,8 @@ class b2ag:
       else:
         phat += yhat
         phat2 += yhat**2
-    return phat/self.eval_samples, np.sqrt(np.abs(phat2/self.eval_samples - (phat/self.eval_samples)**2))
 
-
-
+    mean_confidence = phat/self.eval_samples
+    std_confidence = np.sqrt(np.abs(phat2/self.eval_samples - (phat/self.eval_samples)**2))
+    return mean_confidence, std_variance 
 
